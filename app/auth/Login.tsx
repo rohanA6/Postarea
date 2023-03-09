@@ -4,11 +4,12 @@ import React from "react";
 import { signIn } from "next-auth/react";
 import { HiOutlineLogout } from "react-icons/hi";
 import { IoPersonCircleSharp } from "react-icons/io5";
+import toast from "react-hot-toast";
 
 const Login = () => {
   return (
     <div className=" flex gap-2 items-center">
-      <div className=" text-[48px] text-violet-300">
+      <div onClick={() => toast.error("Please Login first...")} className=" text-[48px] text-violet-300">
         <IoPersonCircleSharp />
       </div>
       <div>

@@ -1,12 +1,18 @@
-import Image from 'next/image'
-import { Inter } from '@next/font/google'
+import Image from "next/image";
+import { Inter } from "@next/font/google";
+import AddPost from "./components/AddPost";
 
-const inter = Inter({ subsets: ['latin'] })
+const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
   return (
     <main>
-      <h1>Roan ahire</h1>
+      <div className=" mx-2 lg:mx-96">
+        <div className=" mt-8">
+          <AddPost />
+        </div>
+        
+      </div>
     </main>
-  )
+  );
 }

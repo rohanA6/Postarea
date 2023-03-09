@@ -3,20 +3,22 @@
 import React from "react";
 import { signOut } from "next-auth/react";
 import { HiOutlineLogin } from "react-icons/hi";
-
-type Props = {
+import Link from "next/link";
+type User = {
   image: string;
 };
 
-const Logged = ({ image }: Props) => {
+const Logged = ({ image }: User) => {
   return (
     <div className=" flex gap-2 items-center">
       <div>
-        <img
-          src={image}
-          alt={"userImg"}
-          className={" h-11 lg:h-12 w-auto rounded-full"}
-        />
+        <Link href={'/dashboard'}>
+          <img
+            src={image}
+            alt={"userImg"}
+            className={" h-11 lg:h-12 w-auto rounded-full"}
+          />
+        </Link>
       </div>
       <div>
         <button
