@@ -2,11 +2,7 @@ import Nav from "./auth/Nav";
 import "./globals.css";
 import Provider from "./Provider";
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }) {
   return (
     <html lang="en">
       {/*
@@ -16,7 +12,7 @@ export default function RootLayout({
       <head />
       <body className=" mx-2 lg:mx-44 md:mx-32  lg:my-6 md:my-5 my-3 font-golos-text">
         <Provider>
-          <Nav/>
+          <Nav />
           {children}
         </Provider>
       </body>
