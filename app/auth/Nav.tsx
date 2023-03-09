@@ -19,12 +19,10 @@ const Nav = async () => {
         </Link>
       </div>
 
-      <div className=" flex gap-5 items-center">
+      <div className=" flex gap-2 items-center">
         <div>
           {!session?.user && <Login />}
-          {session?.user && (
-            <Logged image={session?.user?.image} name={session?.user?.name} />
-          )}
+          {session?.user && <Logged image={session.user.image as string} />}
         </div>
         <ThemeButton />
       </div>
