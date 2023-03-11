@@ -1,19 +1,44 @@
 "use client";
 
 import React, { useState } from "react";
+import { useQueryClient, useMutation } from "@tanstack/react-query";
+import axios from "axios";
 
 const AddPost = () => {
   const [title, setTitle] = useState("");
   const [isDisabled, setIsDisabled] = useState(false);
 
+  //Creat a Post
+  const { mutate } = useMutation(
+    async (title: string) => await axios.post("/api/posts/addPost", { title }),
+    {
+      onError: (error) => {
+        console.log(error);
+      },
+      onSuccess: (data) => {
+        console.log(data);
+        setTitle("");
+        setIsDisabled(false);
+      },
+    }
+  );
+
+  //on submit
+  const submitPost = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsDisabled(true);
+    mutate(title);
+  };
+
   return (
-    <div className=" bg-violet-50 rounded-lg px-10 py-6">
+    <form onSubmit={submitPost} className=" bg-violet-50 rounded-lg px-10 py-6">
       <p className=" font-tiltNeon font-semibold text-violet-700">
         What's on your mind ?
       </p>
       <div className=" bg-white my-2 ">
         <textarea
           className=" w-full border-2 rounded-md border-violet-300 text-base lg:text-lg p-2"
+          name="post"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
           placeholder={"write your thoughts..."}
@@ -26,11 +51,15 @@ const AddPost = () => {
           }`}
         >{`${title.length}/300`}</p>
 
-        <button className=" bg-violet-500 text-violet-50 font-semibold py-2 px-3 text-sm  rounded-lg">
+        <button
+          disabled={isDisabled}
+          type="submit"
+          className=" bg-violet-500 text-violet-50 font-semibold py-2 px-3 text-sm  rounded-lg disabled:opacity-25"
+        >
           Add post
         </button>
       </div>
-    </div>
+    </form>
   );
 };
 

@@ -22,7 +22,7 @@ const Nav = async () => {
       <div className=" flex gap-2 items-center">
         <div>
           {!session?.user && <Login />}
-          {session?.user && <Logged image={session.user.image as string} />}
+          {session?.user && <Logged image={session?.user?.image || ""} />}
         </div>
         <ThemeButton />
       </div>

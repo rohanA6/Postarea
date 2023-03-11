@@ -1,15 +1,24 @@
 "use client";
 
 import { ThemeProvider } from "next-themes";
-import React from "react";
+import React, { ReactNode } from "react";
 import { Toaster } from "react-hot-toast";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
-const Provider = ({ children }: { children: React.ReactNode }) => {
+interface Props {
+  children?: ReactNode;
+}
+
+const quaryClient = new QueryClient();
+
+const Provider = ({ children }: Props) => {
   return (
     <div>
       <ThemeProvider>
-        <Toaster />
-        {children}
+        <QueryClientProvider client={quaryClient}>
+          <Toaster />
+          {children}
+        </QueryClientProvider>
       </ThemeProvider>
     </div>
   );
