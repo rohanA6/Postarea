@@ -2,20 +2,27 @@
 
 import React, { useState } from "react";
 import { useQueryClient, useMutation } from "@tanstack/react-query";
-import axios from "axios";
+import axios, { AxiosError } from "axios";
+import toast from "react-hot-toast";
 
 const AddPost = () => {
   const [title, setTitle] = useState("");
   const [isDisabled, setIsDisabled] = useState(false);
 
+  const queryClient = useQueryClient();
   //Creat a Post
   const { mutate } = useMutation(
     async (title: string) => await axios.post("/api/posts/addPost", { title }),
     {
       onError: (error) => {
+        setIsDisabled(false);
         console.log(error);
+        if (error instanceof AxiosError) {
+          toast.error(error?.response?.data.message);
+        }
       },
       onSuccess: (data) => {
+        toast.success("Post has been made....✌️");
         console.log(data);
         setTitle("");
         setIsDisabled(false);
@@ -35,9 +42,9 @@ const AddPost = () => {
       <p className=" font-tiltNeon font-semibold text-violet-700">
         What's on your mind ?
       </p>
-      <div className=" bg-white my-2 ">
+      <div className="  my-2 ">
         <textarea
-          className=" w-full border-2 rounded-md border-violet-300 text-base lg:text-lg p-2"
+          className=" w-full border-2 rounded-md border-violet-300 dark:bg-white text-black  text-base lg:text-lg p-2"
           name="post"
           value={title}
           onChange={(e) => setTitle(e.target.value)}

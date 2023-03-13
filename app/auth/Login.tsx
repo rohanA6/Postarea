@@ -2,7 +2,7 @@
 
 import React from "react";
 import { signIn } from "next-auth/react";
-import { HiOutlineLogout } from "react-icons/hi";
+import { HiOutlineLogin } from "react-icons/hi";
 import { IoPersonCircleSharp } from "react-icons/io5";
 import toast from "react-hot-toast";
 
@@ -18,7 +18,7 @@ const Login = () => {
           className=" flex gap-1 items-center bg-violet-500 text-violet-100 rounded-full  p-2 lg:p-[9px] px-3 lg:px-5"
         >
           <p className=" hidden lg:block">Login</p>
-          <HiOutlineLogout className=" text-lg lg:text-xl " />
+          <HiOutlineLogin className=" text-lg lg:text-xl " />
         </button>
       </div>
     </div>
