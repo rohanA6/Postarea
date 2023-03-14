@@ -8,6 +8,7 @@ import toast from "react-hot-toast";
 const AddPost = () => {
   const [title, setTitle] = useState("");
   const [isDisabled, setIsDisabled] = useState(false);
+  const queryClient =  useQueryClient();
 
   let toastPostID: string;
 
@@ -24,7 +25,7 @@ const AddPost = () => {
       },
 
       onSuccess: (data) => {
-        // queryClient.invalidateQueries(["posts"]);
+        queryClient.invalidateQueries(["posts"]);
         toast.success("Post has been made ✌️");
         setTitle("");
         setIsDisabled(false);
@@ -41,7 +42,10 @@ const AddPost = () => {
   };
 
   return (
-    <form onSubmit={submitPost} className=" bg-violet-50 rounded-lg px-5 lg:px-10 py-3 lg:py-6">
+    <form
+      onSubmit={submitPost}
+      className=" bg-violet-50 rounded-lg px-5 lg:px-10 py-3 lg:py-6"
+    >
       <p className=" font-tiltNeon lg:text-base text-sm font-semibold text-violet-700">
         What's on your mind ?
       </p>

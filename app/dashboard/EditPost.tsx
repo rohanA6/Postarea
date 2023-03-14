@@ -1,25 +1,25 @@
-"use cient";
+"use client";
 
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import { AiFillDelete } from "react-icons/ai";
 
 type EditProps = {
-  id: string
-  avatar: string
-  name: string
-  postTitle: string
+  id: string;
+  avatar: string;
+  name: string;
+  postTitle: string;
   Comment?: {
-    id: string
-    postId: string
-    userId: string
-  }[]
-}
+    id: string;
+    postId: string;
+    userId: string;
+  }[];
+};
 
-
-const PostCard = ({ name, postTitle, avatar, id, Comment }: EditProps) => {
+const EditPost = ({ name, postTitle, avatar, id, Comment }: EditProps) => {
   return (
-    <div className=" bg-violet-50 text-black rounded-lg my-4 p-5">
+    <div className="  bg-violet-50 text-black rounded-lg my-4 p-5 mx-1 lg:mx-96">
       <div className=" flex items-center gap-1">
         <Image
           className=" h-[30px] lg:h-[35px] w-auto rounded-full"
@@ -35,15 +35,18 @@ const PostCard = ({ name, postTitle, avatar, id, Comment }: EditProps) => {
         <p>{postTitle}</p>
       </div>
 
-      <div className=" -mt-4">
+      <div className=" -mt-4 flex items-baseline gap-5 text-xs font-semibold">
         <Link href={`/post/${id}`}>
-          <p className=" text-violet-700 text-xs font-semibold mt-2">
+          <p className=" text-violet-700 mt-2">
             Comment <span className=" text-sm">({Comment?.length})</span>
           </p>
         </Link>
+        <button className=" flex items-center text-red-400 gap-1 ">
+          Delete <AiFillDelete className=" text-sm" />
+        </button>
       </div>
     </div>
   );
 };
 
-export default PostCard;
+export default EditPost;

@@ -9,7 +9,10 @@ import toast from "react-hot-toast";
 const Login = () => {
   return (
     <div className=" flex gap-2 items-center">
-      <div onClick={() => toast.error("Please Login first...")} className=" text-[48px] text-violet-300">
+      <div
+        onClick={() => toast.error("Please Login first...")}
+        className=" text-[48px] text-violet-300 cursor-pointer"
+      >
         <IoPersonCircleSharp />
       </div>
       <div>

@@ -1,8 +1,6 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import prisma from "../../../prisma/client";
-import { authOptions } from "../auth/[...nextauth]";
 import type { NextApiRequest, NextApiResponse } from "next";
-import { getServerSession } from "next-auth";
 
 export default async function handler(
   req: NextApiRequest,
@@ -13,8 +11,8 @@ export default async function handler(
     try {
       const data = await prisma.post.findMany({
         include: {
-          user: true,
-          // Comment: true,
+          user:true,
+          comment:true,
         },
         orderBy: {
           createdAt: "desc",

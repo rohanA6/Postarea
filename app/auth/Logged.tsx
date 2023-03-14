@@ -4,6 +4,8 @@ import React from "react";
 import { signOut } from "next-auth/react";
 import { HiOutlineLogout } from "react-icons/hi";
 import Link from "next/link";
+import Image from "next/image";
+
 type User = {
   image: string;
 };
@@ -12,10 +14,12 @@ const Logged = ({ image }: User) => {
   return (
     <div className=" flex gap-2 items-center">
       <div>
-        <Link href={'/dashboard'}>
-          <img
+        <Link href={"/dashboard"}>
+          <Image
             src={image}
             alt={"userImg"}
+            height={35}
+            width={35}
             className={" h-11 lg:h-12 w-auto rounded-full"}
           />
         </Link>
