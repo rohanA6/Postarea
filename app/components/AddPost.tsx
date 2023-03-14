@@ -36,13 +36,13 @@ const AddPost = () => {
   const submitPost = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsDisabled(true);
-    toastPostID = toast.loading("Posting...", {duration: 1000});
+    toastPostID = toast.loading("Posting...", { duration: 1000 });
     mutate(title);
   };
 
   return (
-    <form onSubmit={submitPost} className=" bg-violet-50 rounded-lg px-10 py-6">
-      <p className=" font-tiltNeon font-semibold text-violet-700">
+    <form onSubmit={submitPost} className=" bg-violet-50 rounded-lg px-5 lg:px-10 py-3 lg:py-6">
+      <p className=" font-tiltNeon lg:text-base text-sm font-semibold text-violet-700">
         What's on your mind ?
       </p>
       <div className="  my-2 ">
@@ -56,7 +56,7 @@ const AddPost = () => {
       </div>
       <div className=" flex justify-between items-center mt-3">
         <p
-          className={`  font-semibold text-sm ${
+          className={`  font-semibold text-xs lg:text-sm ${
             title.length > 300 ? "text-red-700" : "text-violet-400"
           }`}
         >{`${title.length}/300`}</p>
@@ -64,7 +64,7 @@ const AddPost = () => {
         <button
           disabled={isDisabled}
           type="submit"
-          className=" bg-violet-500 text-violet-50 font-semibold py-2 px-3 text-sm  rounded-lg disabled:opacity-25"
+          className=" bg-violet-500 text-violet-50 font-semibold py-[5px] px-[8px] lg:py-2 lg:px-3 text-sm  rounded-lg disabled:opacity-25"
         >
           Add post
         </button>
